@@ -18,29 +18,41 @@
       <button id="run" disabled>Analyze</button>
       <button id="clear" disabled>Clear</button>
 
-      <div class="row">
-        <canvas id="preview" width="512" height="512"></canvas>
+
+    <div class="row">
+        <div class="canvases">
+            <div class="canvasBlock">
+            <div class="label">Input (fit to 512×512)</div>
+            <canvas id="preview" width="512" height="512"></canvas>
+            </div>
+
+            <div class="canvasBlock">
+            <div class="label">Processed (gradient magnitude)</div>
+            <canvas id="processed" width="512" height="512"></canvas>
+            </div>
+        </div>
+
         <div class="out">
-          <div id="status" class="status">Choose an image to begin.</div>
-          <div class="metric">
+            <div id="status" class="status">Choose an image to begin.</div>
+            <div class="metric">
             <div>Score:</div>
             <div id="score">—</div>
-          </div>
-          <div class="metric">
+            </div>
+            <div class="metric">
             <div>Heuristic result:</div>
             <div id="verdict">—</div>
-          </div>
-          <details>
-            <summary>What does the score mean?</summary>
+            </div>
+
+            <details>
+            <summary>How the analysis works</summary>
             <p>
-              The score measures how “anisotropic” (directionally coherent) the gradient field is.
-              Real photos often have more coherent gradients tied to physical edges/lighting.
-              Diffusion images often show more unstable high-frequency gradient structure.
-              You should calibrate the threshold using known real/AI samples.
+                We analyze luminance gradients at multiple crops and scales. We ignore low-gradient
+                “flat” pixels by keeping only pixels above a gradient magnitude percentile, then
+                compute gradient covariance and a PCA-style anisotropy score.
             </p>
-          </details>
+            </details>
         </div>
-      </div>
+    </div>
     </div>
 
     <footer>
