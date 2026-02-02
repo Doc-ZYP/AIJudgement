@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gradient-Field Authenticity Check</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Gradient-Field Image Authenticity Check</h1>
+    <p class="sub">
+      Client-side luminance → gradients → covariance → score. No uploads to a server.
+    </p>
+
+    <div class="card">
+      <input id="file" type="file" accept="image/*" />
+      <button id="run" disabled>Analyze</button>
+      <button id="clear" disabled>Clear</button>
+
+      <div class="row">
+        <canvas id="preview" width="512" height="512"></canvas>
+        <div class="out">
+          <div id="status" class="status">Choose an image to begin.</div>
+          <div class="metric">
+            <div>Score:</div>
+            <div id="score">—</div>
+          </div>
+          <div class="metric">
+            <div>Heuristic result:</div>
+            <div id="verdict">—</div>
+          </div>
+          <details>
+            <summary>What does the score mean?</summary>
+            <p>
+              The score measures how “anisotropic” (directionally coherent) the gradient field is.
+              Real photos often have more coherent gradients tied to physical edges/lighting.
+              Diffusion images often show more unstable high-frequency gradient structure.
+              You should calibrate the threshold using known real/AI samples.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <small>
+        Tip: Use multiple images for calibration; don’t rely on a single score.
+      </small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
