@@ -50,3 +50,35 @@ footer { margin-top: 14px; }
   .row { grid-template-columns: 1fr; }
   canvas { width: 100%; height: auto; }
 }
+.row {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.canvases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.canvasBlock .label {
+  margin: 0 0 6px;
+  color: #a9b6c7;
+  font-size: 12px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #2a3644;
+  background: #0b0d10;
+}
+
+@media (max-width: 900px) {
+  .row { grid-template-columns: 1fr; }
+  .canvases { grid-template-columns: 1fr; }
+}
