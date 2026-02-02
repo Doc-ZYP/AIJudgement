@@ -96,7 +96,7 @@ runBtn.addEventListener("click", () => {
   // --- Heuristic threshold (NEEDS CALIBRATION) ---
   // Default guess: real photos tend to have higher anisotropy than diffusion samples.
   // You should replace this threshold after calibration.
-  const threshold = 0.18;
+  const threshold = 0.6;
 
   const verdict = score >= threshold
     ? "Likely REAL (more coherent gradients)"
